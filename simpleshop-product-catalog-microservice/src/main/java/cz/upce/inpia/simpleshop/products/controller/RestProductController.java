@@ -16,12 +16,12 @@ public class RestProductController {
 
     private final ProductServiceImpl productService;
 
-    @Autowired
-    private LoadBalancerClient loadBalancerClient;
+    private final LoadBalancerClient loadBalancerClient;
 
     @Autowired
-    public RestProductController(ProductServiceImpl productService) {
+    public RestProductController(ProductServiceImpl productService, LoadBalancerClient loadBalancerClient) {
         this.productService = productService;
+        this.loadBalancerClient = loadBalancerClient;
     }
 
     @GetMapping
