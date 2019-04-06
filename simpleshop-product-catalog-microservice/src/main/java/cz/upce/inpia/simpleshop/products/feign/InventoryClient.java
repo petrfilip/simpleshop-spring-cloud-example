@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@FeignClient("inpia-simple-shop-inventory-microservice")
+@FeignClient(value = "inpia-simple-shop-inventory-microservice", fallback = InventoryClientFallback.class)
 public interface InventoryClient {
 
     @RequestMapping(method = RequestMethod.GET, value = "/api/inventory/{productId}")

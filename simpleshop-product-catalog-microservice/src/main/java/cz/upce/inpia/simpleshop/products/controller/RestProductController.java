@@ -1,11 +1,13 @@
 package cz.upce.inpia.simpleshop.products.controller;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import cz.upce.inpia.simpleshop.products.dto.ProductDto;
 import cz.upce.inpia.simpleshop.products.service.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.web.bind.annotation.*;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.List;
 
@@ -39,5 +41,14 @@ public class RestProductController {
         return loadBalancerClient.choose("inpia-simple-shop-inventory-microservice");
     }
 
+    @GetMapping("hystrix-test")
+    @HystrixCommand(fallbackMethod = "testHystrixFallback")
+    public String testHystrix() {
+        throw new NotImplementedException();
+    }
+
+    public String testHystrixFallback() {
+        return "Fallback method!";
+    }
 
 }
