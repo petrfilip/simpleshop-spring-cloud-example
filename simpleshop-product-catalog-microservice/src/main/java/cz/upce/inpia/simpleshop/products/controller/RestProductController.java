@@ -1,7 +1,7 @@
 package cz.upce.inpia.simpleshop.products.controller;
 
 import cz.upce.inpia.simpleshop.products.dto.ProductDto;
-import cz.upce.inpia.simpleshop.products.service.ProductServiceImpl;
+import cz.upce.inpia.simpleshop.products.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
@@ -14,12 +14,12 @@ import java.util.List;
 @CrossOrigin
 public class RestProductController {
 
-    private final ProductServiceImpl productService;
+    private final ProductService productService;
 
     private final LoadBalancerClient loadBalancerClient;
 
     @Autowired
-    public RestProductController(ProductServiceImpl productService, LoadBalancerClient loadBalancerClient) {
+    public RestProductController(ProductService productService, LoadBalancerClient loadBalancerClient) {
         this.productService = productService;
         this.loadBalancerClient = loadBalancerClient;
     }
