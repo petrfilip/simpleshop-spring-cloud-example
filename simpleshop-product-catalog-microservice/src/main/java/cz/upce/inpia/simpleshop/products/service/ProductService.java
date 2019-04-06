@@ -1,12 +1,12 @@
 package cz.upce.inpia.simpleshop.products.service;
 
-import cz.upce.inpia.simpleshop.products.model.Product;
+import cz.upce.inpia.simpleshop.products.dto.ProductDto;
 
 import java.util.List;
 
 public interface ProductService {
 
-    List<Product> findAll();
+    List<ProductDto> findAll();
 
-    Product findById(Integer productId);
+    ProductDto findById(Integer productId);
 }

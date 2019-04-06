@@ -11,14 +11,17 @@ public class RestInventoryController {
     @Value("${inpia.inventory.test:default}")
     private String inpiaTestProperty;
 
+    @Value("${server.port}")
+    private Integer serverPort;
+
     @GetMapping
     public String defaultMethod() {
         return inpiaTestProperty;
     }
 
     @GetMapping("{productId}")
-    public Integer getProductById(@PathVariable Integer productId) {
-        return productId + 10;
+    public Integer findById(@PathVariable Integer productId) {
+        return serverPort;
     }
 
 }
